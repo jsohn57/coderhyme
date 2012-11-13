@@ -1,0 +1,37 @@
+1. Directory 정리 (crawler --> webcrawler)
+2. Source 추가 : 
+	- loop 한번 더 돌면서 10개 기사 외에 나머지 20개 기사 crawl
+	
+		<code>			
+				for(i = 0, il = elems.length; i < il; i++){
+					children = elems[i].childNodes;
+					for(j = 0, jl = children.length; j < jl; j++){
+						child = children[j];
+						if(child.nodeName == 'LI'){
+							subChildren = child.childNodes;
+							for(k = 0, kl = subChildren.length; k < kl; k++){
+								subChild = subChildren[k];
+								if(subChild.nodeName == 'A'){
+									var meta_ = {};		
+									meta_['base_url'] = subChild.getAttribute('href');
+									meta_['title'] = subChild.getAttribute('title');	
+									pageInfo_.push(meta_);
+								}
+							}
+						} 
+					}
+				}
+				return pageInfo_;
+		</code>
+
+	- 각 기사당 있는 댓글 수만큼 crawl
+	
+		<code>
+				(elems.length > 3) ? (il = 3) : (il = elems.length);		
+				for(i = 0; i < il; i++){
+					replies.push(elems[i].textContent);
+				}
+				return replies;
+		</code>
+
+3. Git 설정 예정	

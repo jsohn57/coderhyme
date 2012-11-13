@@ -1,0 +1,92 @@
+Done
+	1. Directory 구조 변경
+		.
+		|-- bin
+		|   `-- crawl.sh
+		|-- clear.js
+		|-- dat
+		|   |-- crwl
+		|   |   |-- daum_ent.crwl
+		|   |   |-- daum_spo.crwl
+		|   |   |-- nate_eco.crwl
+		|   |   |-- nate_ent.crwl
+		|   |   |-- nate_pol.crwl
+		|   |   |-- nate_soc.crwl
+		|   |   `-- nate_spo.crwl
+		|   `-- nate
+		|       |-- eco
+		|       |   |-- article_url.in
+		|       |   |-- reply_url.in
+		|       |   `-- title.in
+		|       |-- ent
+		|       |   |-- article_url.in
+		|       |   |-- reply_url.in
+		|       |   `-- title.in
+		|       |-- pol
+		|       |   |-- article_url.in
+		|       |   |-- reply_url.in
+		|       |   `-- title.in
+		|       |-- soc
+		|       |   |-- article_url.in
+		|       |   |-- reply_url.in
+		|       |   `-- title.in
+		|       `-- spo
+		|           |-- article_url.in
+		|           |-- reply_url.in
+		|           `-- title.in
+		|-- daum
+		|   `-- crawl
+		|       |-- ent_crawl.js
+		|       `-- spo_crawl.js
+		|-- logs
+		|   `-- cron_run.log
+		|-- nate
+		|   |-- crawl
+		|   |   |-- eco_crawl.js
+		|   |   |-- ent_crawl.js
+		|   |   |-- pol_crawl.js
+		|   |   |-- soc_crawl.js
+		|   |   `-- spo_crawl.js
+		|   |-- json
+		|   |   |-- eco_writeJSON.js
+		|   |   |-- ent_writeJSON.js
+		|   |   |-- pol_writeJSON.js
+		|   |   |-- soc_writeJSON.js
+		|   |   `-- spo_writeJSON.js
+		|   |-- scripts
+		|   |   `-- exec_wget.sh
+		|   `-- wget_out
+		|       |-- eco
+		|       |-- ent
+		|       |-- pol
+		|       |-- soc
+		|       `-- spo
+		|-- node_modules
+		|   |-- async
+		|   |-- iconv
+		|   |-- iconv.cc
+		|   `-- mongodb
+		|-- save.js
+		|-- tmp.log
+		`-- turn.js
+
+	2. Script 추가
+		/projects/GiantEagle/webcrawler/bin/crawl.sh : 크롤러와 clear.js, turn.js, save.js 등을 실행시키는 스크립트
+		/projects/GiantEagle/webcrawler/nate/scripts/exec_wget.sh : wget과 sed -i 명령어를 통해 'cp949' 인코딩 페이지 생성 스크립트
+
+	3. Log Directory 추가
+		/projects/GiantEagle/webcrawler/logs
+
+	4. cron 실행
+		cron job install 	: crontab -e
+		cron job 확인 		: crontab -l
+		cron job delete		: crontab -r
+
+	5. Daum 페이지 크롤러 (스포츠, 연예) 완성
+		/projects/GiantEagle/webcrawler/daum/crawl/spo_crawl.js
+		/projects/GiantEagle/webcrawler/daum/crawl/ent_crawl.js
+
+	6. Git 등록 완료
+
+ToDo
+	1. Daum 나머지 페이지 크롤러 (경제, 사회, 정치) 완성

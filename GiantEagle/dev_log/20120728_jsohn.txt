@@ -1,0 +1,18 @@
+Done
+	1. Daum 나머지 페이지 크롤러 (경제, 사회, 정치) 완성
+		경제, 사회, 정치 메인 페이지의 기사가 얼마 되지 않고 댓글이 많이 않은 관계로
+		스포츠와 연예와 같은 페이지 형식을 가지고 있는 '많이 본 뉴스' 탭 (http://media.daum.
+		net/netizen/popular?include=society,politics,culture.economic,foreign,digital)에서 
+		각 기사의 url을 보고 경제(media.daum.net/economic), 사회(media.daum.net/society), 
+		정치(media.daum.net/politics) 기사를 가려내어 크롤링 함.	
+	2. 크롤러 로그 아웃풋 줄임
+
+ToDo
+	1. 크롤러 더 robust 하게 만들기
+		casperjs 소스 받아 encoding 부분 확인 (페이지 읽어내릴떄 encoding 지정 할 수 있는지	
+		확인)
+	2. 디자인 부탁
+		로고
+		어플리케이션 메인 색
+		UI 페이지 배경 디자인
+	3. 외국 사이트 (nytimes, eoconomist...) 크롤러 작업
