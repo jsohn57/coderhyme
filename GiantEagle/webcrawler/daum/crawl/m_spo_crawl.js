@@ -1,9 +1,8 @@
-//phantom.casperPath = "/usr/local/casperjs";
-//phantom.injectJs("/usr/local/casperjs/bin/bootstrap.js");
-
-//var Iconv = require('iconv').Iconv;
-//var iconv = new Iconv('UTF-8', 'EUC-KR//TRANSLIT//IGNORE');
 var dCasperSports = require('casper').create({
+	clientScripts: [
+		'/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/daum/include/jquery-1.8.1.min.js',
+		'/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/daum/include/h.min.js'
+	],
 	verbose: true,
 	logLevel:"debug",
 	onError: function(self, m){
@@ -18,17 +17,19 @@ var dCasperSports = require('casper').create({
 }), pageInfo = [], replyList = [], completeList = [];
 
 try{
-	dCasperSports.start("http://m.sports.daum.net/sports/ranking/");
+	dCasperSports.start("http://m.sports.daum.net/sports/ranking/hotview/");
 	dCasperSports.waitFor(function () {
 		pageInfo = this.evaluate(function () {
-			var olElem = document.getElementsByClassName('list_ranknews')[0];
-			var aElems = olElem.getElementsByClassName('link_txt');
+			this.echo("hello");
+			this.echo("olElem.length = " + document.getElementsByClassName('section_newsrank').length);
+			var olElem = document.getElementsByClassName('list_newsitem')[0];
+			var aElems = olElem.getElementsByClassName('link_tit');
 			var i, il, pageInfo_ = [];
 			
 			var baseURL = "http://m.sports.daum.net"
 			for(i = 0, il = aElems.length; i < il; i++){
 				var leafNode = aElems[i];
-				var txtElem = leafNode.getElementsByClassName('txt_news')[0];
+				var txtElem = leafNode.getElementsByClassName('tit_news')[0];
 				var meta = {};
 				meta['article_url'] = baseURL + leafNode.getAttribute('href');
 				meta['title'] = txtElem.textContent;
@@ -42,8 +43,18 @@ try{
 		return pageInfo;
 	}, function then(){
 			var i, il;
+			this.echo("pageInfo.length = " + pageInfo.length);
 			for(i = 0, il = pageInfo.length; i < il; i++){
 				this.thenOpen(pageInfo[i]['article_url'], function(){
+
+					this.evaluate(function(){
+						var scripts = document.getElementsByTagName('script');	
+						var j, jl;
+						for(j = 0, jl = scripts.length; j < jl; j++){
+							this.echo(scripts[j]);
+						}
+					});
+					/*
 					var replyInfo = {}; 
 					replyInfo['best_replies'] = this.evaluate(function() {
 						var cmtBody = document.getElementsByClassName('cmt_body');
@@ -55,6 +66,7 @@ try{
 						return meta;
 					});
 					replyList.push(replyInfo);
+					*/
 				});
 			}
 			return replyList;

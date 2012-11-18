@@ -109,13 +109,13 @@ finally{
 		var fs = require('fs');
 		this.each(sectionList, function(self, section){
 			console.log(section);
-			if(fs.exists("/projects/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in")){
-				fs.remove("/projects/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in");
+			if(fs.exists("/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in")){
+				fs.remove("/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in");
 			}	
-			var articleStream = fs.open("/projects/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in", 'w');
-			var titleStream = fs.open("/projects/GiantEagle/webcrawler/dat/nate/m_" + section + "/title.in", 'w');	
+			var articleStream = fs.open("/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/dat/nate/m_" + section + "/article_url.in", 'w');
+			var titleStream = fs.open("/home/jsohn/coderhyme/coderhyme/GiantEagle/webcrawler/dat/nate/m_" + section + "/title.in", 'w');	
 			for(i = 0, il = replyUrlList[section].length; i < il; i++){
-				articleStream.write('\"' + replyUrlList[section][i]['article_url'] + '\"\n');
+				articleStream.write(replyUrlList[section][i]['article_url'] + '\n');
 				console.log(replyUrlList[section][i]['article_url'] + '\n');
 				titleStream.write(replyUrlList[section][i]['title'] + '\n');
 				console.log(replyUrlList[section][i]['title'] + '\n');
